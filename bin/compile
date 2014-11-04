@@ -41,7 +41,7 @@ topic "Updating apt caches"
 
 topic "Fetching python-software-properties"
 apt-get $APT_OPTIONS update | indent
-apt-get $APT_OPTIONS -y -d install python-software-properties | indent
+apt-get $APT_OPTIONS -y -d install software-properties-common | indent
 
 add-apt-repository ppa:ubuntu-toolchain-r/test
 
