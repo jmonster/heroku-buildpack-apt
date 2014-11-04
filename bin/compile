@@ -38,7 +38,12 @@ mkdir -p "$APT_STATE_DIR/lists/partial"
 APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR"
 
 topic "Updating apt caches"
+
+topic "Fetching python-software-properties"
+apt-get $APT_OPTIONS -y -d install python-software-properties | indent
+
 add-apt-repository ppa:ubuntu-toolchain-r/test
+
 apt-get $APT_OPTIONS update | indent
 
 for PACKAGE in $(cat $BUILD_DIR/Aptfile); do
